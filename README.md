@@ -26,6 +26,7 @@ Just copy the **library/status_cake_test.py** in your playbook folder
             test_tags: "something"
             test_type: "HTTP"
             check_rate: 300
+            user_agent: "Status Cake Monitoring"
           with_dict: "{{ example }}"
 
 

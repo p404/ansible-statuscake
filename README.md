@@ -4,7 +4,7 @@ This ansible module setups a test on statuscake API.
 
 ### Requirements
 
-Ansible 2.1
+Ansible >=2.1
 
 ### Installation
 

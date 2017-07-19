@@ -24,7 +24,7 @@ class StatusCake:
             self.module.exit_json(changed=True, meta= resp['Message'])
             
     def check_test(self):
-        API_URL = "https://www.statuscake.com/API/Tests"
+        API_URL = "https://app.statuscake.com/API/Tests"
         response = requests.put(API_URL, headers=self.headers)
         json_object = response.json()
 
@@ -33,7 +33,7 @@ class StatusCake:
                 return item['TestID']
                     
     def create_test(self):
-        API_URL = "https://www.statuscake.com/API/Tests/Update"
+        API_URL = "https://app.statuscake.com/API/Tests/Update"
         data = {"WebsiteName": self.name, "WebsiteURL": self.url, "CheckRate": self.check_rate,
                     "TestType": self.test_type, "TestTags": self.test_tags, "ContactGroup": self.contact,
                     "Port": self.tcp_port, "CustomHeader": self.custom_header}

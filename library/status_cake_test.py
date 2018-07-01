@@ -5,7 +5,7 @@ import requests
 
 class StatusCake:
 
-    def __init__(self, module, username, api_key, name, url, test_tags, check_rate, test_type, contact, tcp_port, custom_header, status_codes, node_locations, follow_redirect, trigger_rate):
+    def __init__(self, module, username, api_key, name, url, test_tags, check_rate, test_type, contact, tcp_port, user_agent, status_codes, node_locations, follow_redirect, trigger_rate):
         self.headers = {"Username": username, "API": api_key}
         self.module = module
         self.name = name
@@ -16,7 +16,7 @@ class StatusCake:
         self.test_type = test_type
         self.contact = contact
         self.tcp_port = tcp_port
-        self.custom_header = custom_header
+        self.user_agent = user_agent
         self.check_rate = check_rate
         self.follow_redirect = follow_redirect
         self.trigger_rate = trigger_rate
@@ -40,7 +40,7 @@ class StatusCake:
         API_URL = "https://app.statuscake.com/API/Tests/Update"
         data = {"WebsiteName": self.name, "WebsiteURL": self.url, "CheckRate": self.check_rate,
                     "TestType": self.test_type, "TestTags": self.test_tags, "StatusCodes": self.status_codes, "NodeLocations": self.node_locations, "ContactGroup": self.contact,
-                    "Port": self.tcp_port, "CustomHeader": self.custom_header, "FollowRedirect": self.follow_redirect, "TriggerRate": self.trigger_rate}
+                    "Port": self.tcp_port, "UserAgent": self.user_agent, "FollowRedirect": self.follow_redirect, "TriggerRate": self.trigger_rate}
 
         test_id = self.check_test()
         
@@ -84,12 +84,12 @@ def main():
     test_type = module.params['test_type']
     contact = module.params['contact']
     tcp_port = module.params['port']
-    custom_header = '{"User-Agent":"' + module.params['user_agent'] + '"}'
+    user_agent = module.params['user_agent']
     follow_redirect = module.params['follow_redirect']
     trigger_rate = module.params['trigger_rate']
 
 
-    test_object = StatusCake(module, username, api_key, name, url, test_tags, check_rate, test_type, contact, tcp_port, custom_header, status_codes, node_locations, follow_redirect, trigger_rate)
+    test_object = StatusCake(module, username, api_key, name, url, test_tags, check_rate, test_type, contact, tcp_port, user_agent, status_codes, node_locations, follow_redirect, trigger_rate)
     test_object.create_test()
 
 if __name__ == '__main__':  

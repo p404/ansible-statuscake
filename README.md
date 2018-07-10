@@ -43,5 +43,6 @@ Just copy the **library/status_cake_test.py** in your playbook folder
 ## TODO
 * Role for Ansible galaxy
 * Edge cases
+* Able to delete a test according to the name
 
 
